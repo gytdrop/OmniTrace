@@ -43,17 +43,39 @@ function EphemeraCanvas() {
     setLoading(true);
 
     try {
-      const formData = new FormData();
-      formData.append("prompt", prompt);
+      // Simulate network delay
+      await new Promise((resolve) => setTimeout(resolve, 800));
 
-      const response = await fetch("http://localhost:8000/api/parse", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await response.json();
+      // Mock static response (no backend API required)
+      const mockData = {
+        nodes: [
+          {
+            id: "node-root",
+            type: "input",
+            position: { x: 250, y: 0 },
+            data: { label: "Intent Core", content: `Command parsed: '${prompt}'` }
+          },
+          {
+            id: "node-crm",
+            type: "default",
+            position: { x: 0, y: 150 },
+            data: { label: "CRM Initialization", content: "Entity: Acme Corp | Status: Staged" }
+          },
+          {
+            id: "node-pm",
+            type: "default",
+            position: { x: 500, y: 150 },
+            data: { label: "Project Assignment", content: "Owner: Anirudh | Priority: P0 Critical" }
+          }
+        ],
+        edges: [
+          { id: "e-root-crm", source: "node-root", target: "node-crm", animated: true },
+          { id: "e-root-pm", source: "node-root", target: "node-pm", animated: true }
+        ]
+      };
       
-      setNodes(data.nodes);
-      setEdges(data.edges);
+      setNodes(mockData.nodes);
+      setEdges(mockData.edges);
     } catch (err) {
       console.error("Canvas rendering execution interrupted:", err);
     } finally {
