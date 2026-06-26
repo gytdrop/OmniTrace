@@ -1,5 +1,7 @@
 # OmniTrace: The Agentic Spatial Workspace
 
+> **Note:** This is just a prototype. There is currently a crash in Google AI Studio until the output is made.
+
 OmniTrace is an AI-native spatial reasoning environment designed to replace rigid, fragmented enterprise SaaS dashboards. It acts as a "Just-In-Time" Generative UI canvas where autonomous agents build the software interface dynamically around the user's specific intent.
 
 Built on top of Google Antigravity 2.0, OmniTrace orchestrates a swarm of specialized AI agents to parse multimodal data, map logical dependencies on an infinite 2D plane, and proactively simulate execution risks before they hit production.
